@@ -417,7 +417,7 @@ class CEFBrowser(Widget, FocusBehavior):
         rect,
         attributes,
     ):
-        if not keyboard_widget.docked:
+        if keyboard_widget and not keyboard_widget.docked:
             if rect and len(rect) == 4:
                 keyboard_widget.pos = (
                     browser.x + rect[0] +
@@ -436,7 +436,7 @@ class CEFBrowser(Widget, FocusBehavior):
         rect,
         attributes,
     ):  # TODO: place right, left, etc. see cefkivy
-        if not keyboard_widget.docked:
+        if keyboard_widget and not keyboard_widget.docked:
             cls.keyboard_position_simple(
                 browser, keyboard_widget, rect, attributes)
             if Window.width < keyboard_widget.x + keyboard_widget.width:
