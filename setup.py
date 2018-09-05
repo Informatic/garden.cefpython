@@ -6,12 +6,9 @@
 # =============================================================================
 
 from setuptools import setup
-from pip.req import parse_requirements
-import pip
 
-install_reqs = parse_requirements("requirements.txt",
-                                  session=pip.download.PipSession())
-reqs = [str(ir.req) for ir in install_reqs]
+with open('requirements.txt') as fd:
+    reqs = [l.strip() for l in fd.readlines() if not l.startswith('#') and l.strip()]
 
 # -----------------------------------------------------------------------------
 exec(open('cefbrowser/version.py').read())  # Will store __version__
